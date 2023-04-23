@@ -1,0 +1,11 @@
+General Electric GE90-115B
+9.6:1
+Up to 115,000 lbf
+
+Rolls-Royce Trent XWB
+10:1
+Up to 97,000 lbf
+
+CFM International CFM56
+5:1 to 6:1
+Up to 34,000 lbf
