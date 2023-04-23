@@ -1,12 +1,6 @@
 Cummins 6.7-liter Turbo Diesel
-6 400 1000 6.7
-High-pressure common rail fuel system with six injectors
-
+6 400 1000 6.7 6
 Duramax 6.6-liter Turbo Diesel
-8 445 910 6.6
-High-pressure common rail fuel system with eight injectors
-
+8 445 910 6.6 8
 Ford Power Stroke 6.7-liter Turbo Diesel
-8 475 1050 6.7
-High-pressure common rail fuel system with eight injectors
-
+8 475 1050 6.7 8
