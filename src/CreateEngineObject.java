@@ -8,7 +8,7 @@ public class CreateEngineObject {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             if (i % 2 == 0) {
-                titles.add(line);
+                titles.add(Character.toTitleCase(line.charAt(0)) + line.substring(1));
             } else {
                 String[] words = line.split("\\s+");
                 fuels.add(words[0]);
@@ -96,7 +96,7 @@ public class CreateEngineObject {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             if (i % 2 == 0) {
-                titles.add(line);
+                titles.add(Character.toTitleCase(line.charAt(0)) + line.substring(1));
             } else {
                 String[] words = line.split("\\s+");
                 cylinders.add(Integer.parseInt(words[0]));
@@ -169,7 +169,7 @@ public class CreateEngineObject {
                                   ArrayList<String> thrust, String fileName) {
         int k = 0;
         while (k < lines.size()) {
-            titles.add(lines.get(k));
+            titles.add(Character.toTitleCase(lines.get(k).charAt(0)) + lines.get(k).substring(1));
             k++;
             bypassRatio.add(lines.get(k));
             k++;
@@ -215,6 +215,31 @@ public class CreateEngineObject {
         for (int i = 0; i < engineList.size(); i++) {
             System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(engineList.get(i).show());
+        }
+
+        System.out.println("\nEnter data about a new engine:");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter engine title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter engine bypass ratio: ");
+        String bypassR = scanner.nextLine();
+        System.out.print("Enter engine thrust: ");
+        String thrustV = scanner.nextLine();
+
+        BaseEngine newEngine = new ReactiveEngine();
+        newEngine.setTitle(Character.toTitleCase(title.charAt(0)) + title.substring(1));
+        if (newEngine instanceof ReactiveEngine) {
+            ((ReactiveEngine) newEngine).setBypassRatio(bypassR);
+            ((ReactiveEngine) newEngine).setThrust(thrustV);
+        }
+        engineList.add(newEngine);
+        Collections.sort(engineList, comparator);
+
+        System.out.print("\n-------------------------------------------\nSorting after adding a new engine:\n" +
+                "-------------------------------------------\n");
+        for (BaseEngine engine : engineList) {
+            System.out.print("\nData about a [" + (engineList.indexOf(engine) + 1) + "] engine");
+            System.out.println(engine.show());
         }
     }
 }

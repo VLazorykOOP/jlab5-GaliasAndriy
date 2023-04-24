@@ -2,7 +2,7 @@ General Electric GE90-115B
 9.6:1
 Up to 115.000 lbf
 
-Rolls-Royce Trent XWB
+rolls-Royce Trent XWB
 10:1
 Up to 97.000 lbf
 

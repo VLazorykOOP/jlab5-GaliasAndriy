@@ -1,6 +1,6 @@
-Toyota 2JZ-GTE
+toyota 2JZ-GTE
 afaf 6 320 325 3.0
-Chevrolet LS7
+chevrolet LS7
 Gasoline 8 505 470 7.0
 Ford Mustang Shelby GT500's 5.2L Supercharged V8
 Gasoline 8 760 625 5.2
