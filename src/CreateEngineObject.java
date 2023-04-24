@@ -87,6 +87,81 @@ public class CreateEngineObject {
             System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(engineList.get(i).show());
         }
+
+        // Input data
+        Scanner scanner = new Scanner(System.in);
+        boolean validInput = false;
+        System.out.println("\nEnter data about a new Internal Combustion engine:");
+        while (!validInput) {
+            try {
+                System.out.print("Enter engine title: ");
+                String title = scanner.nextLine();
+                scanner.nextLine(); // consume leftover newline character
+                System.out.print("Enter fuel type: ");
+                String fuelType = scanner.nextLine().toLowerCase();
+                System.out.print("Enter cylinder count: ");
+                int cylinderCount = scanner.nextInt();
+                System.out.print("Enter horse powers: ");
+                double hp = scanner.nextDouble();
+                System.out.print("Enter torque: ");
+                double torque = scanner.nextDouble();
+                System.out.print("Enter volume engine: ");
+                double volumeEngine = scanner.nextDouble();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid value.");
+                scanner.next();
+            }
+        }
+        System.out.println("\nEnter data about a new Internal Combustion engine:");
+        System.out.print("Enter engine title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter fuel type: ");
+        String fuelType = scanner.nextLine().toLowerCase();
+        System.out.print("Enter cylinder count: ");
+        int cylinderCount = scanner.nextInt();
+        System.out.print("Enter horse powers: ");
+        double hp = scanner.nextDouble();
+        System.out.print("Enter torque: ");
+        double torque = scanner.nextDouble();
+        System.out.print("Enter volume engine: ");
+        double volumeEngine = scanner.nextDouble();
+
+        BaseEngine newEngine = new InternalCombustionEngine();
+        newEngine.setTitle(Character.toTitleCase(title.charAt(0)) + title.substring(1));
+        if (newEngine instanceof InternalCombustionEngine) {
+            switch (fuelType) {
+                case "petrol":
+                case "gasoline":
+                case "diesel":
+                case "cng":
+                case "compressed natural gas":
+                case "bio-diesel":
+                case "biodiesel":
+                case "lpg":
+                case "liquid petroleum gas":
+                case "ethanol":
+                case "methanol":
+                case "electricity":
+                    ((InternalCombustionEngine) newEngine).setFuelType(fuelType);
+                    break;
+                default:
+                    System.out.println(" Invalid fuel type entered: " + fuelType);
+            }
+            ((InternalCombustionEngine) newEngine).setCylinderCount(cylinderCount);
+            ((InternalCombustionEngine) newEngine).setHP(hp);
+            ((InternalCombustionEngine) newEngine).setTorque(torque);
+            ((InternalCombustionEngine) newEngine).setVolumeEngine(volumeEngine);
+        }
+        engineList.add(newEngine);
+        Collections.sort(engineList, comparator);
+
+        System.out.print("\n-------------------------------------------\nSorting after adding a new engine:\n" +
+                "-------------------------------------------\n");
+        for (BaseEngine engine : engineList) {
+            System.out.print("\nData about a [" + (engineList.indexOf(engine) + 1) + "] engine");
+            System.out.println(engine.show());
+        }
     }
 
     public static void dieselEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> fuels,
@@ -162,6 +237,59 @@ public class CreateEngineObject {
         for (int i = 0; i < engineList.size(); i++) {
             System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(engineList.get(i).show());
+        }
+
+        System.out.println("\nEnter data about a new Internal Combustion engine:");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter engine title: ");
+        String title = scanner.nextLine();
+        String fuelType = "Diesel";
+        System.out.print("Enter cylinder count: ");
+        int cylinderCount = scanner.nextInt();
+        System.out.print("Enter horse powers: ");
+        double hp = scanner.nextDouble();
+        System.out.print("Enter torque: ");
+        double torque = scanner.nextDouble();
+        System.out.print("Enter volume engine: ");
+        double volumeEngine = scanner.nextDouble();
+        System.out.print("Enter number of injectors");
+        int numOfInjectors = scanner.nextInt();
+
+        BaseEngine newEngine = new DieselEngine();
+        newEngine.setTitle(Character.toTitleCase(title.charAt(0)) + title.substring(1));
+        if (newEngine instanceof DieselEngine) {
+            switch (fuelType) {
+                case "petrol":
+                case "gasoline":
+                case "diesel":
+                case "cng":
+                case "compressed natural gas":
+                case "bio-diesel":
+                case "biodiesel":
+                case "lpg":
+                case "liquid petroleum gas":
+                case "ethanol":
+                case "methanol":
+                case "electricity":
+                    ((InternalCombustionEngine) newEngine).setFuelType(fuelType);
+                    break;
+                default:
+                    System.out.println(" Invalid fuel type entered: " + fuelType);
+            }
+            ((DieselEngine) newEngine).setCylinderCount(cylinderCount);
+            ((DieselEngine) newEngine).setHP(hp);
+            ((DieselEngine) newEngine).setTorque(torque);
+            ((DieselEngine) newEngine).setVolumeEngine(volumeEngine);
+            ((DieselEngine) newEngine).setNumberOfInjectors(numOfInjectors);
+        }
+        engineList.add(newEngine);
+        Collections.sort(engineList, comparator);
+
+        System.out.print("\n-------------------------------------------\nSorting after adding a new engine:\n" +
+                "-------------------------------------------\n");
+        for (BaseEngine engine : engineList) {
+            System.out.print("\nData about a [" + (engineList.indexOf(engine) + 1) + "] engine");
+            System.out.println(engine.show());
         }
     }
 
