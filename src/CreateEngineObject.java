@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class CreateEngineObject {
     public static void internalCombustionEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> fuels,
@@ -69,11 +69,23 @@ public class CreateEngineObject {
                 }
             }
         }
-
         System.out.println("\n All data received from " + fileName);
         for (int i = 0; i < titles.size(); i++) {
-            System.out.println("\nData about a [" + (i+1) + "] engine");
+            System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(intEngines[i].show());
+        }
+
+        System.out.print("\n-------------------------------------------\nSort Internal Combustion Engines by title:\n" +
+                "-------------------------------------------\n");
+        List<BaseEngine> engineList = new ArrayList<>();
+        for (int i = 0; i < intEngines.length; i++) {
+            engineList.add(intEngines[i]);
+        }
+        Comparator<BaseEngine> comparator = Comparator.comparing(BaseEngine::getTitle);
+        Collections.sort(engineList, comparator);
+        for (int i = 0; i < engineList.size(); i++) {
+            System.out.print("\nData about a [" + (i+1) + "] engine");
+            System.out.println(engineList.get(i).show());
         }
     }
 
@@ -135,49 +147,74 @@ public class CreateEngineObject {
 
         System.out.println("\n All data received from " + fileName);
         for (int i = 0; i < titles.size(); i++) {
-            System.out.println("\nData about a [" + (i+1) + "] engine");
+            System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(dieselEngines[i].show());
+        }
+
+        System.out.print("\n-------------------------------------------\nSort Diesel Engines by title:\n" +
+                "-------------------------------------------\n");
+        List<BaseEngine> engineList = new ArrayList<>();
+        for (int i = 0; i < dieselEngines.length; i++) {
+            engineList.add(dieselEngines[i]);
+        }
+        Comparator<BaseEngine> comparator = Comparator.comparing(BaseEngine::getTitle);
+        Collections.sort(engineList, comparator);
+        for (int i = 0; i < engineList.size(); i++) {
+            System.out.print("\nData about a [" + (i+1) + "] engine");
+            System.out.println(engineList.get(i).show());
         }
     }
 
     public static void jetEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> bypassRatio,
                                   ArrayList<String> thrust, String fileName) {
-//        for (int i = 0; i < lines.size(); i++) {
-//            String line = lines.get(i);
-//            titles.add(line);
-//            bypassRatio.add(line);
-//            thrust.add(line);
-//            if (line.trim().isEmpty()) {
-//                continue;
-//            }
-//        }
-//
-//        BaseEngine[] jetEngines = new BaseEngine[titles.size()];
-//        for (int i = 0; i < titles.size(); i++) {
-//            jetEngines[i] = new ReactiveEngine();
-//
-//            if (titles.get(i) != "") {
-//                jetEngines[i].setTitle(titles.get(i));
-//            } else {
-//                System.out.println("Wrong title: " + titles.get(i));
-//            }
-//
-//            if (jetEngines[i] instanceof ReactiveEngine) {
-//                if (bypassRatio.get(i) != "") {
-//                    System.out.println("Wrong setBypassRatio value: " + bypassRatio.get(i));
-//                }
-//                ((ReactiveEngine) jetEngines[i]).setBypassRatio(bypassRatio.get(i));
-//                if (thrust.get(i) != "") {
-//                    System.out.println("Wrong thrust value: " + thrust.get(i));
-//                }
-//                ((ReactiveEngine) jetEngines[i]).setThrust(thrust.get(i));
-//            }
-//        }
-//
-//        System.out.println("\n All data received from " + fileName);
-//        for (int i = 0; i < titles.size(); i++) {
-//            System.out.println("\nData about a [" + (i+1) + "] engine");
-//            System.out.println(jetEngines[i].show());
-//        }
+        int k = 0;
+        while (k < lines.size()) {
+            titles.add(lines.get(k));
+            k++;
+            bypassRatio.add(lines.get(k));
+            k++;
+            thrust.add(lines.get(k));
+            k++;
+        }
+
+        BaseEngine[] jetEngines = new BaseEngine[titles.size()];
+        for (int i = 0; i < titles.size(); i++) {
+            jetEngines[i] = new ReactiveEngine();
+
+            if (titles.get(i) != "") {
+                jetEngines[i].setTitle(titles.get(i));
+            } else {
+                System.out.println("Wrong title: " + titles.get(i));
+            }
+
+            if (jetEngines[i] instanceof ReactiveEngine) {
+                if (bypassRatio.get(i).isEmpty()) {
+                    System.out.println("Empty setBypassRatio value: " + bypassRatio.get(i));
+                }
+                ((ReactiveEngine) jetEngines[i]).setBypassRatio(bypassRatio.get(i));
+                if (thrust.get(i).isEmpty()) {
+                    System.out.println("Empty thrust value: " + thrust.get(i));
+                }
+                ((ReactiveEngine) jetEngines[i]).setThrust(thrust.get(i));
+            }
+        }
+        System.out.println("\n All data received from " + fileName);
+        for (int i = 0; i < titles.size(); i++) {
+            System.out.print("\nData about a [" + (i+1) + "] engine");
+            System.out.println(jetEngines[i].show());
+        }
+
+        System.out.print("\n-------------------------------------------\nSort Jet Engines by title:\n" +
+                "-------------------------------------------\n");
+        List<BaseEngine> engineList = new ArrayList<>();
+        for (int i = 0; i < jetEngines.length; i++) {
+            engineList.add(jetEngines[i]);
+        }
+        Comparator<BaseEngine> comparator = Comparator.comparing(BaseEngine::getTitle);
+        Collections.sort(engineList, comparator);
+        for (int i = 0; i < engineList.size(); i++) {
+            System.out.print("\nData about a [" + (i+1) + "] engine");
+            System.out.println(engineList.get(i).show());
+        }
     }
 }

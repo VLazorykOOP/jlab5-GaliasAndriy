@@ -1,4 +1,4 @@
-public class ReactiveEngine extends BaseEngine{
+public class ReactiveEngine extends BaseEngine implements Comparable<BaseEngine>{
     private String bypassRatio;
     private String thrust;
 

@@ -1,6 +1,8 @@
+Ford Power Stroke 6.7-liter Turbo Diesel
+8 475 1050 6.7 8
 Cummins 6.7-liter Turbo Diesel
 6 400 1000 6.7 6
 Duramax 6.6-liter Turbo Diesel
 8 445 910 6.6 8
-Ford Power Stroke 6.7-liter Turbo Diesel
-8 475 1050 6.7 8
+Duraxax 6.6-liter Turbo Diesel
+8 445 910 6.6 8

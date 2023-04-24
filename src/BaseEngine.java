@@ -1,4 +1,4 @@
-public class BaseEngine {
+public abstract class BaseEngine implements Comparable<BaseEngine>{
     private String title;
 
     public BaseEngine() {
@@ -13,7 +13,10 @@ public class BaseEngine {
     public void setTitle(String type){
         this.title = type;
     }
-
+    @Override
+    public int compareTo(BaseEngine other) {
+        return this.getTitle().compareTo(other.getTitle());
+    }
     public String show() {
         return "\n Title: " + title;
     }

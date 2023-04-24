@@ -52,7 +52,7 @@ public class Task1 {
             // Creating proper ArrayLists for values
             ArrayList<String> thrust = new ArrayList<String>();
             ArrayList<String> bypassRatio = new ArrayList<String>();
-            // Read data from dieselEngineFile
+            // Read data from jetEngineFile
             FileBufferedReader.moveLinesIntoArrayList(lines, jetEngineFile);
             // Calling function which will create dieselEngine objects
             CreateEngineObject.jetEngine(lines, titles, bypassRatio, thrust, jetEngineFile);

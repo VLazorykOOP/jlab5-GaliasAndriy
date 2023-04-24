@@ -1,4 +1,4 @@
-public class InternalCombustionEngine extends BaseEngine{
+public class InternalCombustionEngine extends BaseEngine implements Comparable<BaseEngine>{
     private String fuelType;
     private int cylinderCount;
     private double hp;

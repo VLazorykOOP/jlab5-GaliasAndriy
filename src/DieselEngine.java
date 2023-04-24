@@ -1,4 +1,4 @@
-public class DieselEngine extends InternalCombustionEngine{
+public class DieselEngine extends InternalCombustionEngine implements Comparable<BaseEngine>{
     private int numberOfInjectors;
 
     public DieselEngine() {
