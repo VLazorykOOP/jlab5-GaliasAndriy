@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.io.*;
+import java.util.List;
 
 public class FileBufferedReader {
-    public static void moveLinesIntoArrayList(ArrayList<String> lines, String fileName)
+    public static void moveLinesIntoArrayList(List<String> lines, String fileName)
             throws IOException {
         // open a file for reading
         String line;

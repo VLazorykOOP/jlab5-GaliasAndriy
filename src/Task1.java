@@ -1,23 +1,24 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Task1 {
     public static void task1() {
-        String intEngineFile = "D:/Java_labs/jlab5-GaliasAndriy/files_engine/InternalEngine.txt";
-        String dieselEngineFile = "D:/Java_labs/jlab5-GaliasAndriy/files_engine/DieselEngine.txt";
-        String jetEngineFile = "D:/Java_labs/jlab5-GaliasAndriy/files_engine/JetEngine.txt";
+        String intEngineFile = "D:/Java_labs/lab5_collections/jlab5-GaliasAndriy/files_engine/InternalEngine.txt";
+        String dieselEngineFile = "D:/Java_labs/lab5_collections/jlab5-GaliasAndriy/files_engine/DieselEngine.txt";
+        String jetEngineFile = "D:/Java_labs/lab5_collections/jlab5-GaliasAndriy/files_engine/JetEngine.txt";
         try {
             // Read data from intEngineFile
-            ArrayList<String> lines = new ArrayList<String>();
+            List<String> lines = new ArrayList<String>();
             FileBufferedReader.moveLinesIntoArrayList(lines, intEngineFile); // Move file lines of data in ArrayList
             // Creating proper ArrayLists for values
-            ArrayList<String> titles = new ArrayList<String>();
-            ArrayList<String> fuels = new ArrayList<String>();
-            ArrayList<Integer> cylinders =  new ArrayList<Integer>();
-            ArrayList<Double> horsePowers =  new ArrayList<Double>();
-            ArrayList<Double> torques = new ArrayList<Double>();
-            ArrayList<Double> engineVolumes = new ArrayList<Double>();
+            List<String> titles = new ArrayList<String>();
+            List<String> fuels = new ArrayList<String>();
+            List<Integer> cylinders =  new ArrayList<Integer>();
+            List<Double> horsePowers =  new ArrayList<Double>();
+            List<Double> torques = new ArrayList<Double>();
+            List<Double> engineVolumes = new ArrayList<Double>();
             // Calling function which will create internalCombustionEngine objects
             CreateEngineObject.internalCombustionEngine(lines, titles, fuels, cylinders, horsePowers,
                     torques, engineVolumes, intEngineFile);
@@ -32,7 +33,7 @@ public class Task1 {
 
 
             // Creating proper ArrayLists for values
-            ArrayList<Integer> numberOfInjectors = new ArrayList<Integer>();
+            List<Integer> numberOfInjectors = new ArrayList<Integer>();
             // Read data from dieselEngineFile
             FileBufferedReader.moveLinesIntoArrayList(lines, dieselEngineFile);
             // Calling function which will create dieselEngine objects
@@ -50,8 +51,8 @@ public class Task1 {
 
 
             // Creating proper ArrayLists for values
-            ArrayList<String> thrust = new ArrayList<String>();
-            ArrayList<String> bypassRatio = new ArrayList<String>();
+            List<String> thrust = new ArrayList<String>();
+            List<String> bypassRatio = new ArrayList<String>();
             // Read data from jetEngineFile
             FileBufferedReader.moveLinesIntoArrayList(lines, jetEngineFile);
             // Calling function which will create dieselEngine objects
