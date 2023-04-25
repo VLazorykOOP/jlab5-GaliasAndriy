@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class CreateEngineObject {
-    public static void internalCombustionEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> fuels,
-                                                 ArrayList<Integer> cylinders, ArrayList<Double> horsePowers,
-                                                 ArrayList<Double> torques, ArrayList<Double> engineVolumes,
+    public static void internalCombustionEngine (List<String> lines, List<String> titles, List<String> fuels,
+                                                 List<Integer> cylinders, List<Double> horsePowers,
+                                                 List<Double> torques, List<Double> engineVolumes,
                                                  String fileName) {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
@@ -90,29 +90,6 @@ public class CreateEngineObject {
 
         // Input data
         Scanner scanner = new Scanner(System.in);
-        boolean validInput = false;
-        System.out.println("\nEnter data about a new Internal Combustion engine:");
-        while (!validInput) {
-            try {
-                System.out.print("Enter engine title: ");
-                String title = scanner.nextLine();
-                scanner.nextLine(); // consume leftover newline character
-                System.out.print("Enter fuel type: ");
-                String fuelType = scanner.nextLine().toLowerCase();
-                System.out.print("Enter cylinder count: ");
-                int cylinderCount = scanner.nextInt();
-                System.out.print("Enter horse powers: ");
-                double hp = scanner.nextDouble();
-                System.out.print("Enter torque: ");
-                double torque = scanner.nextDouble();
-                System.out.print("Enter volume engine: ");
-                double volumeEngine = scanner.nextDouble();
-                validInput = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid value.");
-                scanner.next();
-            }
-        }
         System.out.println("\nEnter data about a new Internal Combustion engine:");
         System.out.print("Enter engine title: ");
         String title = scanner.nextLine();
@@ -164,10 +141,10 @@ public class CreateEngineObject {
         }
     }
 
-    public static void dieselEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> fuels,
-                                     ArrayList<Integer> cylinders, ArrayList<Double> horsePowers,
-                                     ArrayList<Double> torques, ArrayList<Double> engineVolumes,
-                                     ArrayList<Integer> numberOfInjectors, String fileName) {
+    public static void dieselEngine (List<String> lines, List<String> titles, List<String> fuels,
+                                     List<Integer> cylinders, List<Double> horsePowers,
+                                     List<Double> torques, List<Double> engineVolumes,
+                                     List<Integer> numberOfInjectors, String fileName) {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             if (i % 2 == 0) {
@@ -293,8 +270,8 @@ public class CreateEngineObject {
         }
     }
 
-    public static void jetEngine (ArrayList<String> lines, ArrayList<String> titles, ArrayList<String> bypassRatio,
-                                  ArrayList<String> thrust, String fileName) {
+    public static void jetEngine (List<String> lines, List<String> titles, List<String> bypassRatio,
+                                  List<String> thrust, String fileName) {
         int k = 0;
         while (k < lines.size()) {
             titles.add(Character.toTitleCase(lines.get(k).charAt(0)) + lines.get(k).substring(1));
@@ -338,8 +315,10 @@ public class CreateEngineObject {
         for (int i = 0; i < jetEngines.length; i++) {
             engineList.add(jetEngines[i]);
         }
-        Comparator<BaseEngine> comparator = Comparator.comparing(BaseEngine::getTitle);
-        Collections.sort(engineList, comparator);
+
+        //Comparator<BaseEngine> comparator = Comparator.comparing(BaseEngine::getTitle);
+        //Collections.sort(engineList, comparator);
+        Collections.sort(engineList);
         for (int i = 0; i < engineList.size(); i++) {
             System.out.print("\nData about a [" + (i+1) + "] engine");
             System.out.println(engineList.get(i).show());
@@ -361,7 +340,8 @@ public class CreateEngineObject {
             ((ReactiveEngine) newEngine).setThrust(thrustV);
         }
         engineList.add(newEngine);
-        Collections.sort(engineList, comparator);
+        //Collections.sort(engineList, comparator);
+        Collections.sort(engineList);
 
         System.out.print("\n-------------------------------------------\nSorting after adding a new engine:\n" +
                 "-------------------------------------------\n");
